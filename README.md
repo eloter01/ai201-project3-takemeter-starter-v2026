@@ -54,34 +54,59 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `evidence`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** Backs a claim with at least one specific, checkable fact, such
+as a statistic, a link or named source, a quote from an outside source, or a
+named real event.
 
 **Example 1:**
->
+> While this is true, the number of abortions at or after 21 weeks is not insignificant. According to the Guttemacher Institute, 1.2% of abortions occur at or after 21 weeks. That translates into about 15,480 abortions. This thread, of course, is talking specifically about those 15,480 abortions.
 
 **Example 2:**
->
+> Yea. They would look like XXXXXX and waste a lot of ammo. Even the article at the end states they have a range of 1100-1500 yards, so not even close to a mile. The articles title is pure hyperbole. Those fire a .338 lapua (8.59mm).
+
+### `argument`
+
+**Definition:** States, defends, or challenges a claim about the issue, with or
+without reasons, but gives no specific checkable fact.
+
+**Example 1:**
+> What good is that when most cases involving firearms offenses never make it to the full court? Anytime you have the potential to put somebody away for a great many years because they have a felony record and were arrested and in possession of a gun, the possession charges always get dropped and a plea deal is offered.
+
+**Example 2:**
+> There are all kinds of social services, religious and otherwise available that will provide assistance to any woman who wants to carry her baby to term........ When pro abortion people use that as and argument it is just a red herring and smoke screen........
+
+### `reaction`
+
+**Definition:** Responds only to the other poster, not the issue, such as
+insults, ridicule, praise, or agreement, and makes no claim about the issue.
+
+**Example 1:**
+> Then get your sick, satanic mitts off everyone else.
+
+**Example 2:**
+> The same God that created a troll like you.
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `argument` and `reaction`
+
+This is the hardest line because sarcastic posts and rhetorical questions often
+attack the other poster and make a point about the issue at the same time.
 
 **The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
 
+I check the labels in order: `evidence`, then `argument`, then `reaction`.
+
+1. If the post has a specific, checkable fact, it's `evidence`, even if the
+   tone is rude. Vague claims like "studies show", personal stories, and quotes
+   from the other poster don't count as checkable facts.
+2. If not, and the post makes **any** claim about the issue, it's `argument`.
+   That includes claims made through sarcasm, through a rhetorical question, or
+   with no reasons at all.
+3. If the post is only about the other poster and makes no claim about the
+   issue, it's `reaction`.
 
 
 ---
