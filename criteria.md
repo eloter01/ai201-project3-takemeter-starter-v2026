@@ -51,63 +51,80 @@ whether you hit them:
 
 ---
 
-## 1.
+## 1. Balance
 
-<!-- Your criterion. It must name a number. -->
+In `labels.csv`, no label has fewer than 55 rows.
 
-
-
-**Why this target:**
-
-
-
----
-
-## 2.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
+**Why this target:** The assignment already caps any label at 70%, so restating
+that wouldn't be a criterion. From reading my posts, I expect `argument` to be
+the biggest label by a lot and `evidence` to be the thinnest, since only a
+handful of posts contain a link or a number. 55 rows gives the smallest label
+about 8 posts in the 15% test split, which is the notebook's floor for a label
+being measurable at all. If `evidence` comes in under 55, this tells me to
+collect more before I train.
 
 ---
 
-## 3.
+## 2. Confidence
 
-<!-- Your criterion. -->
+On every seed (42, 7, 2024), the model's accuracy on its most-confident third
+of test posts is at least 0.15 higher than its accuracy on its least-confident
+third.
 
-
-
-**Why this target:**
-
-
-
----
-
-## 4.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
+**Why this target:** My hardest boundary is `argument` vs. `reaction`, and this
+community is full of sarcasm and rhetorical questions that attack the poster
+and make a point at the same time. Those posts should be the ones the model is
+least sure about, so its unsure third should hold most of its mistakes. With
+about 38 test posts, each third is about 12 posts, so 0.15 means the confident
+third gets at least 2 more posts right. If confidence meant nothing, a gap like
+that would only show up by luck, not on all three seeds. I compare thirds
+instead of using a fixed cutoff like 0.80, because a small model trained on
+about 175 posts may give low scores, and a cutoff could leave no posts above
+it.
 
 ---
 
-## 5.
+## 3. Overall accuracy
 
-<!-- Your criterion. -->
+On every seed (42, 7, 2024), the model's accuracy on the held-out test split is
+at least 0.70.
 
+**Why this target:** The coin-flip baseline for three labels is 0.33, but that
+isn't the right baseline for my data. If `argument` is around 60% of the file,
+a model that always guesses `argument` scores 0.60, so 0.65 would barely beat
+doing nothing. 0.70 is where I'd call it useful. If `argument` ends up even
+bigger, 0.70 gets close to free, but criterion 4 catches that, because always
+guessing `argument` gives an F1 of 0 on the other two labels.
 
+---
 
-**Why this target:**
+## 4. Per-label performance
 
+On every seed (42, 7, 2024), every label has an F1 of at least 0.50 on the test
+split.
 
+**Why this target:** With about 38 posts in the test split and at least 55 rows
+per label (criterion 1), my smallest label will have about 8 test examples, so
+a single miss moves its F1 by around 0.1. I can't hold it to 0.70 with that few
+examples. But below 0.50 the model hasn't really learned the label and is just
+folding it into `argument`. `evidence` has obvious surface cues (links,
+percentages), so the label most likely to miss this is `reaction`.
+
+---
+
+## 5. Stability
+
+Across the three training seeds (42, 7, 2024), the highest and lowest test
+accuracy differ by no more than 0.08.
+
+**Why this target:** With about 38 test posts, each post is worth about 2.6
+points of accuracy, so 0.08 allows a gap of about 3 posts between the best and
+worst seed. The notebook re-splits the data for each seed, so each run is
+tested on different posts, and the spread includes which posts land in the
+test split, not just training noise. That makes 0.08 harder than it sounds. If
+the spread is wider than that, no single run's accuracy means much. This is the
+one I'd be most embarrassed to miss, because it would mean the numbers I
+report are mostly noise.
 
 ---
 
