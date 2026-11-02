@@ -130,45 +130,83 @@ so on). I check the labels in order: `evidence`, then `argument`, then
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** 4forums.com, a public debate forum where people
+argued about gun control, abortion, gay marriage, and other political issues.
+The forum no longer exists, so I collected the posts from the Internet Argument
+Corpus, a research dataset of 4forums.com threads. I started with 250 posts and
+later added 21 from a reserve pool of 500 more posts from the same corpus
+(`data/extra_posts.csv`) to balance the labels.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:**
+
+1. **Cold (20 rows).** I labelled the first 20 posts myself using only my
+   definitions and decision rule, with no AI help. These are marked `cold`.
+   They were labelled under the first version of my rules, and I didn't change
+   them after the rules were tightened.
+2. **AI pre-labelling (230 rows).** Claude pre-labelled the other 230 posts
+   using my definitions and decision rule. I read every one and changed 6.
+3. **Tightening the rules.** The review showed gaps in my rules: whether a fact
+   has to support a claim, what "the issue" means, and where off-topic posts
+   go. I fixed the definitions and decision rule above, rechecked the rows the
+   new rules could affect, and changed 4 more. All 10 changed rows are marked
+   `ai-prelabel, corrected`. The rest are marked `ai-prelabel`.
+4. **Balancing (21 rows).** After the review, `evidence` had 44 rows and
+   `reaction` had 54, both under the 55 my first criterion asks for. Claude
+   read the first 120 posts of the reserve pool in order and pre-labelled the
+   `evidence` and `reaction` ones. It picked different kinds of evidence (court
+   cases, named sources, quotes, historical events) instead of just posts with
+   numbers, so the model doesn't learn "has a number = `evidence`". I reviewed
+   all 21 and kept them. They're marked `ai-prelabel, added for balance`.
+
+In total: 20 rows labelled by me alone, and 251 pre-labelled by AI and checked
+by me, 10 of which I corrected.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `argument` | 148 | 54.6% |
+| `reaction` | 62 | 22.9% |
+| `evidence` | 61 | 22.5% |
+| **Total** | 271 | 100% |
 
 **Three hard cases**
 
 <!-- Any post that made you pause: what it was, which two labels it could have
      been, and what you chose. These are worth more than the easy 190. -->
 
-**1.**
-> *The post:*
+**1.** (line 56)
+> *The post:* I believe my wording was "very rare". Please do not exaggerate my statements by mis-quoting me. But as you have mentioned it, care to produce some figures on the frequency of partial birth abortions? Its just you have a habit of making over-inflated statements to support your arguements.
 >
-> *Could have been:*
+> *Could have been:* `reaction` or `argument`
 >
-> *I chose, because:*
+> *I chose, because:* `argument`. Most of the post is about being misquoted,
+> which on its own would be `reaction`. But it restates a claim about the issue
+> ("very rare") and asks the other poster for figures on partial-birth
+> abortions. Under my rule, demanding proof for the other side's claim is
+> `argument`.
 
-**2.**
-> *The post:*
+**2.** (line 144)
+> *The post:* Prove your assertion that he has called himself a conservative Christian rather than a conservative Republican OP. Support your clai if you can or stop trying to lump everyone on the right together.
 >
-> *Could have been:*
+> *Could have been:* `argument` or `reaction`
 >
-> *I chose, because:*
+> *I chose, because:* `reaction`. Like the post above, it demands proof, but
+> for a claim about a person (whether someone called himself a conservative
+> Christian), not about the thread's topic. This is the post that made me write
+> down that "the issue" means the thread's debate topic.
 
-**3.**
-> *The post:*
+**3.** (line 122)
+> *The post:* What part of.. 'On the other hand, not one acceptable reason for individuals owning guns is mentioned.' are you having trouble with? Only a gullible fool, such as yourself, would lend blind allegiance, and obedience, to a 'world' body that seeks to usurp the sovereignty of individual nations. That's why you are indeed a LIBERAL.
 >
-> *Could have been:*
+> *Could have been:* `evidence` or `argument`
 >
-> *I chose, because:*
+> *I chose, because:* `argument`. It's only `evidence` if the quoted sentence
+> comes from an outside document, and from this post alone I can't tell
+> whether it's from a document or the other poster's earlier words. My rule is
+> that if I can't tell, the quote doesn't count. Line 263 has the same quote,
+> but that post points to the UN website as the source, so there it counts and
+> the post is `evidence`.
 
 ---
 
