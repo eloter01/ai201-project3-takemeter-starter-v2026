@@ -3,6 +3,6 @@
 # Copy these from your README so the baseline is judged on exactly the
 # definitions you wrote. baseline.py reads this file.
 
-evidence: backs a claim with at least one specific, checkable fact, such as a statistic, a link or named source, a quote from an outside source, or a named real event
-argument: states, defends, or challenges a claim about the issue, with or without reasons, but gives no specific checkable fact
-reaction: responds only to the other poster, not the issue, such as insults, ridicule, praise, or agreement, and makes no claim about the issue
+evidence: states at least one specific, checkable fact, such as a statistic, a link or named source, a quote from an outside source, or a named real event
+argument: states, defends, or challenges a claim about the issue, with or without reasons, but states no specific checkable fact
+reaction: makes no claim about the issue, such as insults, ridicule, praise, or agreement aimed at the other poster or their side, or off-topic chat

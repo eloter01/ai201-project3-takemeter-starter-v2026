@@ -56,9 +56,9 @@
 
 ### `evidence`
 
-**Definition:** Backs a claim with at least one specific, checkable fact, such
-as a statistic, a link or named source, a quote from an outside source, or a
-named real event.
+**Definition:** States at least one specific, checkable fact, such as a
+statistic, a link or named source, a quote from an outside source, or a named
+real event.
 
 **Example 1:**
 > While this is true, the number of abortions at or after 21 weeks is not insignificant. According to the Guttemacher Institute, 1.2% of abortions occur at or after 21 weeks. That translates into about 15,480 abortions. This thread, of course, is talking specifically about those 15,480 abortions.
@@ -69,7 +69,7 @@ named real event.
 ### `argument`
 
 **Definition:** States, defends, or challenges a claim about the issue, with or
-without reasons, but gives no specific checkable fact.
+without reasons, but states no specific checkable fact.
 
 **Example 1:**
 > What good is that when most cases involving firearms offenses never make it to the full court? Anytime you have the potential to put somebody away for a great many years because they have a felony record and were arrested and in possession of a gun, the possession charges always get dropped and a plea deal is offered.
@@ -79,8 +79,9 @@ without reasons, but gives no specific checkable fact.
 
 ### `reaction`
 
-**Definition:** Responds only to the other poster, not the issue, such as
-insults, ridicule, praise, or agreement, and makes no claim about the issue.
+**Definition:** Makes no claim about the issue, such as insults, ridicule,
+praise, or agreement aimed at the other poster or their side, or off-topic
+chat.
 
 **Example 1:**
 > Then get your sick, satanic mitts off everyone else.
@@ -97,16 +98,29 @@ attack the other poster and make a point about the issue at the same time.
 
 **The decision rule I used every time:**
 
-I check the labels in order: `evidence`, then `argument`, then `reaction`.
+"The issue" means the thread's debate topic (guns, abortion, gay marriage, and
+so on). I check the labels in order: `evidence`, then `argument`, then
+`reaction`.
 
-1. If the post has a specific, checkable fact, it's `evidence`, even if the
-   tone is rude. Vague claims like "studies show", personal stories, and quotes
-   from the other poster don't count as checkable facts.
+1. If the post states a specific, checkable fact, it's `evidence`, even if the
+   tone is rude and even if the fact isn't used to support anything.
+   - Test: would the sentence be false if the fact were false? Naming the topic
+     isn't stating a fact. "I don't think Massachusetts allowing same-sex
+     marriage was a bad thing" is an opinion. "We still have gay marriages in
+     Massachusetts" is a fact.
+   - Paraphrasing what a named person said counts, and so does a headline that
+     names its source.
+   - A historical event counts when it's stated as a fact, not when it's used
+     as an analogy or sarcasm (like the Nazis as a rhetorical device).
+   - Vague claims like "studies show" and personal stories don't count.
+   - A quote counts only if it clearly comes from an outside source. If I can't
+     tell whether it's from a document or the other poster, it doesn't count.
 2. If not, and the post makes **any** claim about the issue, it's `argument`.
-   That includes claims made through sarcasm, through a rhetorical question, or
-   with no reasons at all.
-3. If the post is only about the other poster and makes no claim about the
-   issue, it's `reaction`.
+   That includes claims made through sarcasm, through a rhetorical question, by
+   demanding proof for the other side's claim, or with no reasons at all.
+3. Otherwise, it's `reaction`. That covers posts about the other poster or
+   their side, claims about people that aren't about the topic, and off-topic
+   chat.
 
 
 ---
