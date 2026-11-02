@@ -42,7 +42,15 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
-
+TakeMeter sorts posts from 4forums.com, a public debate forum where people
+argued about gun control, abortion, and gay marriage. Each post gets one of
+three labels: `evidence` (it states a specific, checkable fact), `argument`
+(it makes a claim about the topic but states no checkable fact), or `reaction`
+(it makes no claim about the topic, like an insult, agreement, or off-topic
+chat). The classifier is `distilbert-base-uncased`, fine-tuned on 271 posts
+that I labelled or checked myself. The goal is to separate posts that bring
+checkable facts from bare opinion and from posts that just go after the other
+person.
 
 ---
 
@@ -214,16 +222,28 @@ by me, 10 of which I corrected.
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** `distilbert-base-uncased`
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, max length 128
+tokens, seed 42. Trained on a CPU (`results.json` records `device: cpu`,
+torch 2.14.1+cpu).
 
-**Anything I changed from the defaults, and why:**
+**Anything I changed from the defaults, and why:** Nothing. I kept every
+default and only set `LABELS` to my three labels. 128 tokens was enough: only
+3 of my 271 posts are longer than that (the longest is 177 tokens and the
+median is 48), so almost nothing gets cut off.
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+**Split sizes:** 189 train / 41 val / 41 test.
 
+| Label | Train | Val | Test |
+|---|---|---|---|
+| `evidence` | 43 | 9 | 9 |
+| `argument` | 103 | 22 | 23 |
+| `reaction` | 43 | 10 | 9 |
+
+Every label has at least 8 posts in the test split, because I topped up
+`evidence` and `reaction` to 55+ rows before training (see The Dataset). With
+only 9 test posts each, their F1 scores will still move a lot between seeds.
 
 
 ---
@@ -237,19 +257,42 @@ of next unit's variance. -->
      workflow and disclosing it costs you nothing. Not disclosing it is the
      problem. -->
 
-**Moment 1**
+**Moment 1: stress-testing my labels**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I gave Claude my three label definitions and asked for
+  eight posts that sit on the boundaries between them. Then I labelled them
+  myself without its help.
+- *What came back:* Eight made-up posts. Seven of my answers followed my
+  rules, but one ("Agreed, well said. The government has no business deciding
+  who can get married.") fit no label. It makes a claim with no reason, and my
+  `argument` definition required reasons while `reaction` couldn't contain a
+  claim.
+- *What I changed:* I rewrote `argument` to cover claims "with or without
+  reasons", and took "sarcasm" out of `reaction`, because another test post
+  showed sarcasm can carry a claim.
 
-**Moment 2**
+**Moment 2: reviewing the pre-labels**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I had Claude pre-label 230 posts and flag the ones it
+  wasn't sure about, plus any places where my rules didn't decide the case.
+- *What came back:* 43 borderline posts and five rule questions, like whether
+  a fact has to support a claim to count as `evidence`, and where off-topic
+  posts go.
+- *What I changed:* I made the rule calls myself (any stated checkable fact
+  counts, "the issue" means the thread's topic, and step 3 became "otherwise,
+  `reaction`"), updated the rules in this README, and changed 10 labels. Some
+  were posts where Claude didn't follow its own calls, like line 96 (a
+  historical fact it called `argument`) and line 122 (a quote it counted as
+  outside evidence when the source wasn't clear).
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** Claude pre-labelled 251 of my 271 posts: the 230
+that weren't in my cold set, plus 21 it picked from a reserve pool to balance
+the labels. I read and checked every one and changed 10 (marked
+`ai-prelabel, corrected` in the note column). The other 20 posts are my cold
+set, which I labelled alone with no AI help (marked `cold`). Claude also
+checked my criteria to make sure each one could be measured, and helped turn
+my notes into the README text. The final labels, rules, and target numbers are
+my decisions.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
