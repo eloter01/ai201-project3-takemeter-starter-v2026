@@ -27,7 +27,7 @@ act as an expert Python developer who writes clean, readable, and production-rea
 6. Scope Discipline
 * Build only what the current spec section asks for. Later sections often change earlier assumptions, so code written ahead of the spec usually ends up being undone.
 * Don't add features, parameters, config options, or abstractions the current section doesn't need, even if they look like obvious next steps. Sections 1 to 4 govern how you write what's in scope, not whether to expand it.
-* The current spec is docs/SPEC.md. Use it so your design choices don't conflict with later sections, but don't write code that only a later section needs.
+* The current spec is the one named under "Specs" below.
 * If something in the current section is ambiguous, ask before implementing. For small gaps the spec doesn't cover, choose the simplest option and list it under "Assumptions" in your response.
 * If something outside the current scope seems worth adding, suggest it in one line at the end instead of implementing it.
 7. Prose writing
@@ -35,11 +35,16 @@ act as an expert Python developer who writes clean, readable, and production-rea
 
 ---
 
+## Specs
+- Feature specs live in docs/, one per phase
+- Current phase: docs/SPEC_phase_2.md
+- Earlier specs are historical; the code is the source of truth for what exists. Use it so your design choices don't conflict with later sections, but don't write code that only a later section needs.
+
 ## About this repo
 
-TakeMeter is a CodePath AI201 student project, forked from a starter. The student picks a public online community, designs 2–4 labels for its posts, hand-labels 200+ posts, and fine-tunes `distilbert-base-uncased` to classify them. It runs over two units: unit 5 builds it (the spec is docs/SPEC.md) and unit 6 tests it. Everything runs locally. There are no API keys and no hosted models.
+TakeMeter is a CodePath AI201 student project, forked from a starter. The student picks a public online community, designs 2–4 labels for its posts, hand-labels 200+ posts, and fine-tunes `distilbert-base-uncased` to classify them. It runs over two units: unit 5 builds it (the spec is docs/SPEC.md) and unit 6, the current phase, tests it (the spec is docs/SPEC_phase_2.md). Everything runs locally. There are no API keys and no hosted models.
 
-Most of the graded work is writing and data: `criteria.md`, `labels.csv`, and the README sections. The scripts and notebook are starter code. The student is expected to change only the settings at the top of notebook sections 1 and 2.
+Most of the graded work is writing and data: `criteria.md`, `labels.csv`, and the README sections. The scripts and notebook are starter code. The student is expected to change only the settings at the top of notebook sections 1 and 2, plus `RUN_LABEL` in section 6.
 
 ## Commands
 
@@ -54,6 +59,7 @@ Always use the project venv. The `python` on PATH on this machine is 3.14, which
 
 - `test.py` checks the environment. It is not a test suite. There are no unit tests, no linter, and no build step.
 - `baseline.py` downloads `facebook/bart-large-mnli` (~1.6 GB) the first time it runs.
+- Milestone 1 also asks for a bare-label-names baseline run. There's no flag for it: point `--definitions` at a file that doesn't exist. Also set `--out`, or the run overwrites `baseline_results.json`. For example: `.venv/Scripts/python.exe baseline.py --definitions none --out baseline_results_bare.json`.
 - Training happens in `takemeter.ipynb`, run cell by cell in VS Code with the `.venv` kernel. `nbconvert` isn't installed, so it can't run headless from the shell.
 - To dry-run the notebook without real data, set `CSV = "data/practice_labels.csv"` in section 2. That file has 60 posts labelled `analysis` / `hot_take` / `reaction`.
 
@@ -70,13 +76,15 @@ data/staff_posts.csv + data/staff_labels.csv + my_staff_labels.csv ──► agr
 
 These have to line up across files. A mismatch fails late or quietly:
 
-- **Label spelling.** The `label` column in `labels.csv`, `LABELS` in notebook section 2, and the keys in `label_definitions.txt` must match exactly, including case. `baseline.py` takes its label list from `labels.csv` and looks each one up in the definitions. A misspelled key silently falls back to the bare label name, which is a weaker prompt. Right now `label_definitions.txt` still has the starter's example definitions.
-- **results.json shape.** `baseline.py --trained` reads `accuracy`, `f1_macro`, and `per_label[label].f1`. That is the shape `evaluate()` in notebook section 5 writes, so keep it if you edit `evaluate()`.
+- **Label spelling.** The `label` column in `labels.csv`, `LABELS` in notebook section 2, and the keys in `label_definitions.txt` must match exactly, including case. `baseline.py` takes its label list from `labels.csv` and looks each one up in the definitions. A misspelled key silently falls back to the bare label name, which is a weaker prompt.
+- **results.json shape.** `baseline.py --trained` reads `accuracy`, `f1_macro`, and `per_label[label].f1`. That is the shape `evaluate()` in notebook section 5 returns, so keep it if you edit `evaluate()`.
 - **Staff set matching.** `agreement.py` joins staff posts to staff labels on `id`. It then matches the student's file on text, after collapsing whitespace. Posts have to be pasted unchanged.
 
 Notebook details:
 
 - Earlier cells define functions that later cells reuse: `check_dataset`, `split_dataset`, `train_model`, and `evaluate`. Later cells also rely on globals set earlier: `df`, `LABELS`, `MAX_LENGTH`, `DEVICE`, and the training settings. Sections 6–7 only work after sections 1–5 have run in the same kernel.
+- Sections 4 and 5 train and write files in the same cells that define `train_model` and `evaluate`. So getting the kernel ready for sections 6–7 retrains seed 42 and rewrites `results.json` and `test_split.csv`. If `labels.csv` changed, that replaces the unit 5 evidence and the posts `baseline.py` scores. Check `git diff` on both before committing them.
+- Section 7 reads `all_results` from section 6 and prints the confusion matrix for the first seed (42) only.
 - `labels.csv` is only read in section 2. New rows mean re-running from section 2.
 - The notebook does its own stratified 70/15/15 split from `SEED`. `labels.csv` must stay one unsplit file. Splitting it twice leaks posts between train and test.
 - Section 6 retrains with seeds 42, 7, and 2024. Its `RUN_LABEL` has to be changed to `"after"` before the unit 6 improvement re-run. Otherwise it overwrites `results_three_seeds_before.json`.
@@ -89,7 +97,9 @@ Script conventions: each script reconfigures stdout and stderr to UTF-8 at the t
 - **Output files are evidence.** `results.json`, `test_split.csv`, `results_three_seeds_*.json`, `baseline_results.json`, and `agreement_results.json` are left out of `.gitignore` on purpose, because they get committed and graded. Don't ignore them.
 - **Commit history is evidence too.** It shows `criteria.md` existed before the results. Never amend, rebase, squash, or force-push, and never delete and recreate the repo. Each unit needs at least four new commits. Commits inherited from the starter are excluded by hash (see .github/MAINTAINERS.md).
 - **criteria.md.** Five numbered criteria, each naming a number, written before training. In unit 6, never edit or delete an original criterion. A revision goes underneath it as a "Revised in unit 6" note, and only when the criterion couldn't be measured. Lowering a missed target doesn't count as a revision.
-- **labels.csv.** One file with columns `text,label,note`, at least 200 rows, and no label over 70%. Posts are kept whole. In the `note` column, the 20 rows labelled without help are marked `cold`, and AI pre-labelled rows are flagged.
+- **labels.csv.** One file with columns `text,label,note`, at least 200 rows, and no label over 70%. Posts are kept whole. In the `note` column, the 20 rows labelled without help are marked `cold`, and AI pre-labelled rows are flagged. The file is saved with every field quoted (pandas `QUOTE_ALL`, `\n` line endings). Keep that style when writing it, so a label change shows up as a small diff.
+- **One change in unit 6.** The Milestone 5 improvement is the only change allowed this unit. Labels, the taxonomy (README definitions and `label_definitions.txt`), and criteria stay as they are. Don't edit `labels.csv` or the notebook settings except as that one improvement.
 - **What Claude must not do for the student.** Don't label or suggest labels for the 20 cold rows, or for the 30 staff-set posts in unit 6 (`my_staff_labels.csv`). Both measure the student's own judgment. AI pre-labelling of the other rows is allowed, but the student has to check every row and disclose it in the README.
-- **The staff set uses the staff rules.** It is labelled under `data/staff_taxonomy.md`, not the student's own taxonomy. `data/staff_labels.csv` comes from the TF after the student finishes.
-- **README.** Everything is pasted as text. The confusion matrix goes in as a markdown table, never an image. The unit 6 sections stay empty during unit 5.
+- **The staff set uses the staff rules.** It is labelled under `data/staff_taxonomy.md`, not the student's own taxonomy. `data/staff_labels.csv` is the answer key. The student downloads it into `data/` only after `my_staff_labels.csv` is saved. Don't open or print it before then, because there's no way to unsee it.
+- **The baseline prediction comes first.** Milestone 1 wants the student's one-sentence prediction in the README before they see the comparison. Don't run `baseline.py --trained` until it's written.
+- **README.** Everything is pasted as text. The confusion matrix goes in as a markdown table, never an image. The unit 6 sections stay empty during unit 5. Any AI help in unit 6, such as spotting patterns in errors, gets disclosed under How I Used AI.
