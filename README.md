@@ -308,10 +308,11 @@ my decisions.
 
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.220 | 0.561 | +0.341 |
+| Macro F1 | 0.120 | 0.240 | +0.120 |
+| F1 — `argument` | 0.000 | 0.719 | +0.719 |
+| F1 — `evidence` | 0.360 | 0.000 | -0.360 |
+| F1 — `reaction` | 0.000 | 0.000 | +0.000 |
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
@@ -324,6 +325,16 @@ will beat the baseline on F1 for all three labels.
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
+
+The baseline, a general model with no training, labeled every post as
+`evidence` when given my label definitions. My trained model labeled every
+post as `argument` instead. The gap comes from my test split having more
+`argument` posts than `evidence` posts: always guessing `argument` scores
+23/41 = 0.561, while always guessing `evidence` scores 9/41 = 0.220.
+`argument` also makes up over half of my training split (103 of 189 posts),
+while `evidence` and `reaction` have 43 each, so it appears the fine-tuned
+model learned to heavily bias toward `argument` rather than learning to tell
+the labels apart.
 
 
 
