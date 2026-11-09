@@ -317,6 +317,10 @@ my decisions.
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
+The definitions I created make logical sense to me and captured several edge
+cases that I believe to be most common; therefore I believe my trained model
+will beat the baseline on F1 for all three labels.
+
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->

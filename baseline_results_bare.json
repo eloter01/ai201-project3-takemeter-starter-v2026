@@ -1,0 +1,239 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 41,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": false,
+  "scores": {
+    "n": 41,
+    "accuracy": 0.34146341463414637,
+    "f1_macro": 0.3605313092979127,
+    "per_label": {
+      "argument": {
+        "precision": 0.5,
+        "recall": 0.17391304347826086,
+        "f1": 0.25806451612903225,
+        "support": 23
+      },
+      "evidence": {
+        "precision": 0.5,
+        "recall": 0.4444444444444444,
+        "f1": 0.47058823529411764,
+        "support": 9
+      },
+      "reaction": {
+        "precision": 0.24,
+        "recall": 0.6666666666666666,
+        "f1": 0.3529411764705882,
+        "support": 9
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "I think you have your image of an assault weapon slightly skewed. an assault weapon by its very name is a weapon designed to harm another human. this does not mean full auto it just means that it was never designed to be a target/hunting/self defense weapon.",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "OK you have convinced me high capacity magazines are the root cause of crime. Senator Feinstein, she has a concealed weapon permit and is licensed to carry a gun.",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Oh, but Sina does not live in a womb so she is unimportant.",
+      "gold": "argument",
+      "predicted": "argument"
+    },
+    {
+      "text": "Bonus question: (Can you spot the grammatical error within the quoted text?)",
+      "gold": "reaction",
+      "predicted": "argument"
+    },
+    {
+      "text": "No, they just don't 'fear' in general, their fears are directed at something (madmen with guns ;)), and those that do find other ways to feel protected (usually in society rather than being a lone individual).",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Actually, Mega didn't make any claims. He just reposted an editorial.",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "There is a point, however, that the fetal lung is not mature enough to survive outside the womb even with mechanical assistance. So, unless our technology will be pretty radically different in the future, it isn't about getting it out, it's about it not surviving when it is out.",
+      "gold": "argument",
+      "predicted": "argument"
+    },
+    {
+      "text": "So somebody try and tell us, that with stuff like this going on, that America still needs to overhaul its gun laws to bring them more in line with those of Mexico.",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Oh! I get it! abortion is fun, it is only a traumatic experience (to kill your unborn son/daughter) for \"unbalanced\" women emoticon_xagree",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "And before Heller, numerous judges declared that the Second Amendment was nothing more than a collective right that belonged to the states, giving them permission to have private militia armies for their own defense. In the end though, both they, and Wilkinson are wrong and their opinions matter not.",
+      "gold": "evidence",
+      "predicted": "argument"
+    },
+    {
+      "text": "This makes more sense then anything else I've heard on this thread.",
+      "gold": "reaction",
+      "predicted": "evidence"
+    },
+    {
+      "text": "They can \"marry\" whomever they love. Benefits though, are a different matter. The state and society views marriage as an opposite-sex institution. It's not about anyone getting harmed; no one said it was.",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "The bahavior is only \"morally corrupted\" if there is, in fact, something wrong with what they did. I don't see it.",
+      "gold": "argument",
+      "predicted": "argument"
+    },
+    {
+      "text": "No one, I repeat no one wants to take punitive actions against any woman unless you call carrying the baby to term punitive action......... All we want is for the baby in the womb to have the same chance you did if possible...........",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "I love this line. I assume by \"harm\" you mean an actual physical harm or some kind or another (physical in this case includes loss of items). So this would cut our laws in half. Walk around naked? No big deal! Have sex on the street why doing cocaine...go for it! Drunk in public? Who cares! The list can go on forever.",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Well, I guess you're entitled to your opinions. On the gun-control board, I imagine you might encounter a lot of rednecks- not the best specimen of our poplulation.",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Yep, suppressing natural behavior is always the way to go. We should also get them to stop pooping.",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Is that what you said right before they started banning assault weapons? 'Oh, let's just see what Sarah Brady wants to do?' Obviously, you're gullible. Since you're such a brainiac and all, why don't you visit the UN website and see what your beloved UN is up to? And again, read this slower this time (if that helps) 'On the other hand, not one acceptable reason for individuals owning guns is mentioned.'",
+      "gold": "evidence",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Here is the definition of pro: 1 : an argument or evidence in affirmation <an appraisal of the pros and cons< 2 : the affirmative side or one holding it You claim to be defending the right to bear arms. Yet you defend the very gun control laws that the gun haters want! How are you defending the right to bear arms if you want the very same gun control laws as the gun haters?",
+      "gold": "evidence",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Why? You'll just call them 'stupid'. And by doing so you will have effectively trumped all of the facts in one fell swoop. Right?",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Well, it stated that they would not be forced to have an abortion, but would be held in contempt of court. Was what he said wrong only because he is trying to intrude on their private lives, or because he felt that the couple should not have any more children put onto the taxpayer's backs? Is this necessarily a liberal view?",
+      "gold": "argument",
+      "predicted": "argument"
+    },
+    {
+      "text": "I'd say there were a lot of stones going both ways. Do you know the Rev. well enough to be able to make that claim, that he's a bigot? Or is it he represents the system?",
+      "gold": "reaction",
+      "predicted": "argument"
+    },
+    {
+      "text": "\" 'Arms' in this context were military arms not the personal weapons of private individuals. The context of 'depriving of the whole nation of arms' was the refusal of the British to conscript Indians into the British Army during the First World War. Gandhi was an extreme anti-militarist. The statement is odd coming out of him, but he used the circumstance for political purposes to advance the cause of Home Rule and Independence.\" http://www.potowmack.org/thequotes.html#gandhi",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Good, this isn't the time for either side to be making politically motivated comments, even if the case is over a week old.",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "What good is that when most cases involving firearms offenses never make it to the full court? Anytime you have the potential to put somebody away for a great many years because they have a felony record and were arrested and in possession of a gun, the possession charges always get dropped and a plea deal is offered.",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "It is abrasive to think that republican's are republican's souly for the fact of abortion rights or non right's however you want to put it. My father is a republican, i am a democrat and always will be. My father believes in abortion and he is a republican so your theory is so far wrong from beginning to end. Either way you look at it, Republican's have unsuccesfully pulled the abortion rights from american women so it really doesn't matter.",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Showing the RIDICULOUS nature of some gun laws! Even the Antis can't (or maybe won't) obey them! Ridiculous paperwork traps that even caught and surprised the Queen of gun control! If they had arrested her, they would have gotten a Real criminal off the streets and NOW our society would have finally been safe! Ridiculous! But it was a good thing for her, that Bloomburg and his Illegal Mayors weren't around when she broke America's gun laws! emoticon_smile",
+      "gold": "argument",
+      "predicted": "evidence"
+    },
+    {
+      "text": "I think that I don't have quite enough Tobasco in my Bloody Mary. emoticon_wow",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Wait a second. What if it is by reason of genetic instability that the baby miscarries? Then, by your standards, this would be deemed as suicide. Check it out, another way for insurance companies to save money. They wouldn't have to pay for the ensuing DNC's or follow up visits. Because suicide is not covered by insurance. Dang, I'd be in debt up to my eyebrows. My wife has had 4 extremely emotional miscarriages. Thank God, that Symbiote is only joking.",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Then why does the NRA use that quote at this link? http://www.nraila.org/Issues/FactSheets/Read.aspx?ID=108",
+      "gold": "evidence",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Well, if burglars want to steal guns then it makes sense that they would be likely to target the homes of gun owners. And the source is from the recently published book Evaluating Gun Policy which you can read and review. The source is listed at the bottom.",
+      "gold": "evidence",
+      "predicted": "argument"
+    },
+    {
+      "text": "Exactly so. Pro-choice people would not impose their values on anyone; profetallifers would impose theirs on every woman of child bearing age.emoticon_angry",
+      "gold": "argument",
+      "predicted": "evidence"
+    },
+    {
+      "text": "They're going after retailers selling ones that don't. Duh!",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "What you mean is, yet again. We have had this dance several times already. Why don't you find the best of the several times you have already posted your stuff, hit permalink, gain the address and post the links. We have done this several times before. Although, no one will stop you, certainly not me!",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "And last years stats say, 3rd July 2009 The most violent country in Europe: Britain is also worse than South Africa and U.S.",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Maybe they don't want to know. Why should some busybody force them into a predicament that they don't want to be in? In this country, every born person has freedom of choice!",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "This is not what hospitals do with biomedical waste. They incinerate it. If these people are really doing this I can\"t imagine who the buyer is , and they are breaking many many laws.",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "which is pretty much the same thing. The majority of representatives get their way. The representatives are elected by a majority. Being overally picky about it gets you no where...we pretty much have a majority rules nation. And we still haven't settled the question about how you think you can impose your belief on others but I can't. The \"convention\" idea didn't work, the idea that you aren't imposing a belief on others didn't work, so what is next?",
+      "gold": "argument",
+      "predicted": "reaction"
+    },
+    {
+      "text": "The VAST majority of abortions occur within the first trimester. Abortions at 21 weeks and over are pretty rare.",
+      "gold": "argument",
+      "predicted": "evidence"
+    },
+    {
+      "text": "From a book review of BETTER FOR ALL THE WORLD: The Secret History of Forced Sterilization and America's Quest for Racial Purity by Harry Bruinius: http://www.nytimes.com/2006/02/26/books/review/26satel.html Hmmm, Teddy Roosevelt, Winston Churchill, the Rockefeller foundations, millions of Americans, the State of Indiana. . . all these embraced the concept of EUGENICS. Interesting, yes?",
+      "gold": "evidence",
+      "predicted": "evidence"
+    },
+    {
+      "text": "Sorry you feel like that. But in a fight to the death there are no rules of decent society. I will cheat and use every advantage I can get to stop a felon trying to take my life. When the police use a stun gun, his partner is standing right next to him as a backup with a 12-guage shotgun. When you sign up for that stun gun, buy then extra optional accessory of a partner with a 12-guage shotgun.",
+      "gold": "argument",
+      "predicted": "reaction"
+    }
+  ]
+}
