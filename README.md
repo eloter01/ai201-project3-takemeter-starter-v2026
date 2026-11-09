@@ -294,6 +294,12 @@ checked my criteria to make sure each one could be measured, and helped turn
 my notes into the README text. The final labels, rules, and target numbers are
 my decisions.
 
+**Moment 3: analyzing the results and testing an improvement**
+
+- *What I asked for:* I had AI run baseline.py and agreement.py, and create a blank my_staff_labels.csv with no labels. I also asked it to investigate why my definitions made the baseline perform worse; the grammar of the prompt was not the cause. Later, it broke down the confidence thirds for Criterion 2 and ranked possible causes of the missed targets.
+- *What came back:* AI helped identify patterns in the errors and suggested wording changes for my prediction and gap paragraphs. Its first draft of the Diagnoses section reflected its ranked analysis, which I then rewrote. It also recommended increasing the epoch count.
+- *What I changed:* I reviewed and rewrote the diagnosis, used the wording suggestions where appropriate, and increased EPOCHS from 3 to 10 in notebook section 2. AI made that notebook edit and formatted my text into the README. It also mistakenly committed a copy of my own labels as the staff-label file; I caught the error, and it was corrected in commit 2330ad0.
+
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 5.
@@ -642,7 +648,17 @@ Yes, overall. Accuracy increased from 0.561 on all three seeds to 0.878, 0.707, 
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
 
+Criterion 2 — Confidence. Seed 2024's confidence gap was 0.000: the most-confident third was no more accurate than the least-confident third. I'd inspect the confidence-ranked predictions for that seed and review whether errors cluster around the argument/`reaction` boundary.
 
+Criterion 4 — Per-label F1. The lowest F1 was reaction on every seed: 0.824 on seed 42, 0.533 on seed 7, and 0.462 on seed 2024. The confusion matrices show 2, 5, and 6 reaction posts misclassified as argument, respectively; I'd revisit that boundary using the agreement report and add more reaction examples from data/extra_posts.csv.
+
+Criterion 5 — Stability. The accuracy spread was 0.171, above the 0.08 target. With only 41 test posts, one post changes accuracy by about 2.4 percentage points, and each reaction F1 score rests on just 9 posts. I'd expand the dataset and held-out test set, especially for reaction, and compare a run of about 7 epochs because seed 42's validation accuracy peaked there.
+
+I stopped because the assignment allowed only one change this unit, and I had already increased the epoch count; I also ran out of time to relabel the boundary or add more examples.
+
+The gap between what I meant my labels to capture and what the model learned:
+
+After 10 epochs, the model learned to recognize the three labels better, but its remaining errors still tended to collapse into argument: evidence was mislabeled as argument 2, 2, and 4 times across seeds 42, 7, and 2024, while reaction was mislabeled as argument 2, 5, and 6 times. The confusion matrices show 1, 5, and 2 additional errors in other directions, respectively, so the model's main remaining weakness is distinguishing reaction from argument, rather than separating all three labels evenly.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
