@@ -347,27 +347,51 @@ the labels apart.
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Balance: smallest label in `labels.csv` | ≥ 55 rows | 61 | 61 | 61 |  |
+| 2. Confidence: most-confident third minus least-confident third, accuracy | ≥ 0.15 | 0.769 | 0.692 | 0.308 |  |
+| 3. Overall accuracy | ≥ 0.70 | 0.561 | 0.561 | 0.561 |  |
+| 4. Per-label: lowest label F1 | ≥ 0.50 | 0.000 | 0.000 | 0.000 |  |
+| 5. Stability: accuracy across seeds | spread ≤ 0.08 | 0.561 | 0.561 | 0.561 |  |
+
+Criterion 1 is a count in `labels.csv`, so it's the same for every seed.
+Criterion 5 is one number across all three seeds: the spread is 0.000.
+
+All three seeds ran on `cpu` (torch 2.14.1+cpu), with 41 test posts each
+(9 `evidence`, 23 `argument`, 9 `reaction`).
+
+The spread table from section 6:
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.561 | 0.561 | 0.561 | 0.000 |
+| Macro F1 | 0.240 | 0.240 | 0.240 | 0.000 |
+| F1 — `evidence` | 0.000 | 0.000 | 0.000 | 0.000 |
+| F1 — `argument` | 0.719 | 0.719 | 0.719 | 0.000 |
+| F1 — `reaction` | 0.000 | 0.000 | 0.000 | 0.000 |
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
+Seed 42, from section 7. Seeds 7 and 2024 gave the same matrix.
+
+| true \ predicted | evidence | argument | reaction |
 |---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| **evidence** | 0 | 9 | 0 |
+| **argument** | 0 | 23 | 0 |
+| **reaction** | 0 | 9 | 0 |
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
+
+My biggest off-diagonal number is a tie at 9 (9 real `evidence` posts and 9
+real `reaction` posts called `argument`), and since every number sits in the
+`argument` column, my trained model labeled every post as `argument`, the same
+thing the Baseline vs. Trained table showed, so it didn't learn any of my label
+boundaries, not just one of them.
 
 
 
