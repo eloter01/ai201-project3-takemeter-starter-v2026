@@ -1,7 +1,48 @@
 {
   "compared": 30,
-  "agreed": 30,
-  "agreement_rate": 1.0,
-  "disagreements": [],
+  "agreed": 22,
+  "agreement_rate": 0.7333333333333333,
+  "disagreements": [
+    {
+      "text": "Anyone who races more than once a month isn't training, they're just collecting medals.",
+      "staff": "hot_take",
+      "mine": "reaction"
+    },
+    {
+      "text": "Heart rate zones are astrology for runners.",
+      "staff": "hot_take",
+      "mine": "reaction"
+    },
+    {
+      "text": "The club needs to stop pretending the Tuesday session is for everyone. It isn't and it never has been.",
+      "staff": "hot_take",
+      "mine": "reaction"
+    },
+    {
+      "text": "Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem.",
+      "staff": "hot_take",
+      "mine": "analysis"
+    },
+    {
+      "text": "First run back after eight weeks out. Two miles, slower than my warm-up used to be, and I don't care even slightly.",
+      "staff": "reaction",
+      "mine": "analysis"
+    },
+    {
+      "text": "Watching the last 400 of that and I had to stand up. Still standing up actually.",
+      "staff": "reaction",
+      "mine": "analysis"
+    },
+    {
+      "text": "Blew up at 20 with the pace band still in my hand like it was going to help. Rough one.",
+      "staff": "reaction",
+      "mine": "analysis"
+    },
+    {
+      "text": "Someone handed my kid an orange slice at mile 22 and I have been crying on and off since.",
+      "staff": "reaction",
+      "mine": "analysis"
+    }
+  ],
   "staff_posts_not_in_mine": 0
 }
