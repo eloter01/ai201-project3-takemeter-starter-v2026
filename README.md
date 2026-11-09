@@ -601,11 +601,25 @@ rules leave most open.
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Balance: smallest label in `labels.csv` | ≥ 55 rows | 61 | 61 | 61 |  |
+| 2. Confidence: most-confident third minus least-confident third, accuracy | ≥ 0.15 | 0.154 | 0.308 | 0.000 |  |
+| 3. Overall accuracy | ≥ 0.70 | 0.878 | 0.707 | 0.707 |  |
+| 4. Per-label: lowest label F1 | ≥ 0.50 | 0.824 | 0.533 | 0.462 |  |
+| 5. Stability: accuracy across seeds | spread ≤ 0.08 | 0.878 | 0.707 | 0.707 |  |
+
+The lowest label F1 was `reaction` on every seed. Criterion 5's spread is
+0.171. Same three seeds, same splits, and same `cpu` device as the before
+run. The only change is 10 epochs instead of 3.
+
+The spread table from section 6:
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.878 | 0.707 | 0.707 | 0.171 |
+| Macro F1 | 0.865 | 0.673 | 0.611 | 0.255 |
+| F1 — `evidence` | 0.875 | 0.737 | 0.571 | 0.304 |
+| F1 — `argument` | 0.898 | 0.750 | 0.800 | 0.148 |
+| F1 — `reaction` | 0.824 | 0.533 | 0.462 | 0.362 |
 
 **Did it help, and how do I know:**
 
