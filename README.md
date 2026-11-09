@@ -594,18 +594,20 @@ rules leave most open.
 ## The Improvement
 
 **What I changed:**
+I increased EPOCHS from 3 to 10 in notebook section 2. Nothing else changed.
 
 **Which diagnosis pointed at it:**
+Undertraining. The training loss was still falling when the original run stopped, suggesting the model might benefit from more training.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1. Balance: smallest label in `labels.csv` | ≥ 55 rows | 61 | 61 | 61 |  |
-| 2. Confidence: most-confident third minus least-confident third, accuracy | ≥ 0.15 | 0.154 | 0.308 | 0.000 |  |
-| 3. Overall accuracy | ≥ 0.70 | 0.878 | 0.707 | 0.707 |  |
-| 4. Per-label: lowest label F1 | ≥ 0.50 | 0.824 | 0.533 | 0.462 |  |
-| 5. Stability: accuracy across seeds | spread ≤ 0.08 | 0.878 | 0.707 | 0.707 |  |
+| 1. Balance: smallest label in `labels.csv` | ≥ 55 rows | 61 | 61 | 61 | MET |
+| 2. Confidence: most-confident third minus least-confident third, accuracy | ≥ 0.15 | 0.154 | 0.308 | 0.000 | MISSED |
+| 3. Overall accuracy | ≥ 0.70 | 0.878 | 0.707 | 0.707 | MET |
+| 4. Per-label: lowest label F1 | ≥ 0.50 | 0.824 | 0.533 | 0.462 | MISSED |
+| 5. Stability: accuracy across seeds | spread ≤ 0.08 | 0.878 | 0.707 | 0.707 | MISSED |
 
 The lowest label F1 was `reaction` on every seed. Criterion 5's spread is
 0.171. Same three seeds, same splits, and same `cpu` device as the before
@@ -626,7 +628,7 @@ The spread table from section 6:
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
 
-
+Yes, overall. Accuracy increased from 0.561 on all three seeds to 0.878, 0.707, and 0.707. All three seeds now meet the overall accuracy target. The lowest per-label F1 also improved from 0.000 across all seeds to 0.824, 0.533, and 0.462, although the last seed still falls short of the 0.50 target. However, the improvement came with less consistency: the accuracy spread increased from 0.000 to 0.171, exceeding the 0.08 target. The confidence criterion also fell short on seed 2024. Increasing the epochs helped the model learn the labels, but it did not solve every problem and made performance more dependent on the seed.
 
 ---
 
