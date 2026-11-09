@@ -433,7 +433,7 @@ boundaries, not just one of them.
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** 22 / 30 = 73%
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -456,26 +456,130 @@ boundaries, not just one of them.
      what you did across your own 200. -->
 
 **1.**
-> *The post:*
+> *The post:* Anyone who races more than once a month isn't training, they're just collecting medals.
 >
-> *Staff said / I said:*
+> *Staff said / I said:* `hot_take` / `reaction`
 >
-> *My call, and why:*
+> *My call, and why:* Staff is right. This is a general claim about anyone who
+> races monthly, with no support, no event, and nothing about the writer's own
+> experience. Rule 2 asks whether a post is about a claim or about the writer,
+> and this is all claim. I read the dismissive tone as a `reaction`, but rule 2
+> says outright that a heated post is still a `hot_take` if it's making a
+> general claim.
 >
-> *Which pile:*
+> *Which pile:* (a)
 
 **2.**
-> *The post:*
+> *The post:* Heart rate zones are astrology for runners.
 >
-> *Staff said / I said:*
+> *Staff said / I said:* `hot_take` / `reaction`
 >
-> *My call, and why:*
+> *My call, and why:* Staff is right. It's a confident general claim about the
+> world with no support offered. Nothing happened to the writer and there's
+> nothing for it to be a reaction to. Same mistake as #1: I let how strongly it
+> was put stand in for the `reaction` definition, when the definitions treat
+> strength of feeling as irrelevant to both.
 >
-> *Which pile:*
+> *Which pile:* (a)
+
+**3.**
+> *The post:* The club needs to stop pretending the Tuesday session is for everyone. It isn't and it never has been.
+>
+> *Staff said / I said:* `hot_take` / `reaction`
+>
+> *My call, and why:* Staff is right, though this is the closest of the three.
+> It could be frustration after a recent session, but the post never says
+> anything happened or how it felt. It asserts something general about the club
+> ("never has been"), which rule 2 puts in `hot_take`. Reading it as `reaction`
+> means supplying an event the post doesn't mention.
+>
+> *Which pile:* (a)
+
+**4.**
+> *The post:* Times are down about 3% since the shoe rules changed, so obviously the shoes are the whole story and the sport has a problem.
+>
+> *Staff said / I said:* `hot_take` / `analysis`
+>
+> *My call, and why:* I think `analysis` is defensible. Rule 1 asks whether the
+> fact carries the argument, and here the "so" makes the 3% the explicit reason
+> for the conclusion. That matches the staff's own `analysis` example (times
+> down 3% since the rule change, so the shoes are the likely cause). It's the
+> opposite of their `hot_take` example, where the 3% is tacked on after the
+> conclusion as a flourish. The staff reading probably rests on the overreach,
+> since "the whole story" and "the sport has a problem" go well past what one
+> correlation supports. But rule 1 tests whether the fact is load-bearing, not
+> whether the argument is sound, and a bad argument from a fact is still an
+> argument from a fact. Rule 4's word count would lean toward the conclusion,
+> but rule 4 only applies after rules 1 to 3, and rule 1 already settles this
+> one.
+>
+> *Which pile:* (c)
+
+**5.**
+> *The post:* First run back after eight weeks out. Two miles, slower than my warm-up used to be, and I don't care even slightly.
+>
+> *Staff said / I said:* `reaction` / `analysis`
+>
+> *My call, and why:* Staff is right. It has numbers (eight weeks, two miles),
+> but the `analysis` definition requires an argument, and this post doesn't
+> argue anything. It reports what just happened to the writer and how they
+> feel, which is the `reaction` definition almost word for word. Rule 3 says
+> recency doesn't outrank evidence. It doesn't say a number turns a report into
+> an argument.
+>
+> *Which pile:* (a)
+
+**6.**
+> *The post:* Watching the last 400 of that and I had to stand up. Still standing up actually.
+>
+> *Staff said / I said:* `reaction` / `analysis`
+>
+> *My call, and why:* Staff is right. "The last 400" names a part of the race,
+> not a stat being used as evidence, and there's no argument at all. It's
+> nearly identical to the staff's own `reaction` example in rule 2 ("That
+> finish was unbelievable, I'm shaking").
+>
+> *Which pile:* (a)
+
+**7.**
+> *The post:* Blew up at 20 with the pace band still in my hand like it was going to help. Rough one.
+>
+> *Staff said / I said:* `reaction` / `analysis`
+>
+> *My call, and why:* Staff is right. "At 20" places the moment in the race. It
+> isn't a fact doing work in an argument, because there's no argument. It's the
+> writer's own race today and how it felt.
+>
+> *Which pile:* (a)
+
+**8.**
+> *The post:* Someone handed my kid an orange slice at mile 22 and I have been crying on and off since.
+>
+> *Staff said / I said:* `reaction` / `analysis`
+>
+> *My call, and why:* Staff is right. "Mile 22" is scene-setting. Nothing is
+> argued. It's something that just happened to the writer and the feeling it
+> left.
+>
+> *Which pile:* (a)
 
 **What the pattern in my disagreements tells me:**
 
+Seven of my eight disagreements are pile (a), and they come from two versions
+of the same habit: matching on a surface cue instead of asking the rule's
+question.
 
+- Heated tone → `reaction` (#1 to #3). Rule 2 covers exactly this case.
+- Contains a number → `analysis` (#5 to #8). Every `reaction` post I called
+  `analysis` has a number in it.
+
+Neither cue was applied consistently, either. I matched staff on the other
+heated hot takes, and on "Four minutes off. FOUR." and the wind post, which
+have numbers too. So I knew the rules but applied them unevenly.
+
+Most of my misses are on posts where the definitions give a clear answer, not
+on the borderline ones. My one defensible disagreement (#4) is the post the
+rules leave most open.
 
 ---
 
