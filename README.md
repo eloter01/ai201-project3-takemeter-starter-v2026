@@ -347,11 +347,11 @@ the labels apart.
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1. Balance: smallest label in `labels.csv` | ≥ 55 rows | 61 | 61 | 61 |  |
-| 2. Confidence: most-confident third minus least-confident third, accuracy | ≥ 0.15 | 0.769 | 0.692 | 0.308 |  |
-| 3. Overall accuracy | ≥ 0.70 | 0.561 | 0.561 | 0.561 |  |
-| 4. Per-label: lowest label F1 | ≥ 0.50 | 0.000 | 0.000 | 0.000 |  |
-| 5. Stability: accuracy across seeds | spread ≤ 0.08 | 0.561 | 0.561 | 0.561 |  |
+| 1. Balance: smallest label in `labels.csv` | ≥ 55 rows | 61 | 61 | 61 | MET |
+| 2. Confidence: most-confident third minus least-confident third, accuracy | ≥ 0.15 | 0.769 | 0.692 | 0.308 | MET |
+| 3. Overall accuracy | ≥ 0.70 | 0.561 | 0.561 | 0.561 | MISSED |
+| 4. Per-label: lowest label F1 | ≥ 0.50 | 0.000 | 0.000 | 0.000 | MISSED |
+| 5. Stability: accuracy across seeds | spread ≤ 0.08 | 0.561 | 0.561 | 0.561 | MET |
 
 Criterion 1 is a count in `labels.csv`, so it's the same for every seed.
 Criterion 5 is one number across all three seeds: the spread is 0.000.
@@ -404,11 +404,11 @@ boundaries, not just one of them.
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Balance: no label has fewer than this many rows in `labels.csv` | ≥ 55 rows | MET | Each dataset has 61 rows |
+| 2 | Confidence: most-confident third's accuracy minus least-confident third's, on every seed | ≥ 0.15 | MET | I calculated the measurements |
+| 3 | Overall accuracy on the test split, on every seed | ≥ 0.70 | MISSED | Overall accuracy was always 0.561 |
+| 4 | Every label's F1 on the test split, on every seed | ≥ 0.50 | MISSED | From the confusion matrix calculations |
+| 5 | Stability: highest minus lowest accuracy across the three seeds | ≤ 0.08 | MET | Target was measured |
 
 **Diagnoses**
 
@@ -421,7 +421,15 @@ boundaries, not just one of them.
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
 
+The two missed criteria—overall accuracy (Criterion 3) and per-label F1 (Criterion 4)—may have several contributing causes.
 
+Inconsistent labeling. This could help explain both misses. When training labels are inconsistent, the model receives conflicting examples of what distinguishes one category from another, making it harder to learn reliable decision boundaries. This can reduce overall accuracy and disproportionately affect the F1 scores of labels with unclear or inconsistently applied definitions. The agreement report provides direct evidence that I sometimes applied the taxonomy inconsistently, particularly when distinguishing hot_take from reaction and analysis from reaction. However, it does not establish that these same mistakes occurred in the 200 training posts.
+
+Undertraining. This could also explain both misses. The model may have stopped training before it had learned enough to generalize effectively to the test data. The declining training loss suggests that the model was still learning when training stopped, while the unchanged validation metrics suggest it had not yet improved its predictions. Insufficient training could therefore have contributed to the low overall accuracy and poor per-label F1 scores.
+
+Too few examples. This is particularly relevant to Criterion 4. With only 43 training examples each for evidence and reaction, the model may not have had enough examples to learn the characteristics of those categories. The fact that it predicted zero instances of either label suggests it struggled to recognize them altogether. A larger training set might help, although additional examples would also provide more training steps, making it difficult to isolate the effect of sample size from undertraining.
+
+Overall assessment. The evidence points to inconsistent labeling as a demonstrated weakness in the annotation process, undertraining as a plausible limitation of the model, and insufficient examples as a possible contributor to poor recognition of less frequent labels. All three could have contributed to the missed accuracy and F1 targets, but the current results do not establish how much each contributed.
 
 ---
 
